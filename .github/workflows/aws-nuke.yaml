@@ -27,9 +27,9 @@ jobs:
       - name: Nuke
         run: |
           ARCH=$(uname -m)
-          curl -L https://github.com/ekristen/aws-nuke/releases/download/${{ env.VERSION }}/aws-nuke-${{ env.VERSION }}-linux-${ARCH} -o aws-nuke
-          chmod +x aws-nuke
-          ./aws-nuke -c config/nuke-config.yaml --no-dry-run --force 2> errors.txt
+          curl -s -L https://github.com/ekristen/aws-nuke/releases/download/${{ env.VERSION }}/aws-nuke-${{ env.VERSION }}-linux-${ARCH}.tar.gz -o /tmp/aws-nuke-${{ env.VERSION }}-linux-${ARCH}.tar.gz
+          tar -xf /tmp/aws-nuke-${{ env.VERSION }}-linux-${ARCH}.tar.gz -C /tmp
+          /tmp/aws-nuke -c config/nuke-config.yaml --no-dry-run --force 2> errors.txt
 
       - name: Show errors
         if: always()
