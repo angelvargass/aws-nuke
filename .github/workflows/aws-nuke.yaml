@@ -26,12 +26,8 @@ jobs:
 
       - name: Nuke
         run: |
-          ARCH=$(uname -m)
-          if [ "$ARCH" == "x86_64"]; then
-            ARCH="amd64"
-          fi
-          curl -s -L https://github.com/ekristen/aws-nuke/releases/download/${{ env.VERSION }}/aws-nuke-${{ env.VERSION }}-linux-${ARCH}.tar.gz -o /tmp/aws-nuke-${{ env.VERSION }}-linux-${ARCH}.tar.gz
-          tar -xf /tmp/aws-nuke-${{ env.VERSION }}-linux-${ARCH}.tar.gz -C /tmp
+          curl -s -L https://github.com/ekristen/aws-nuke/releases/download/${{ env.VERSION }}/aws-nuke-${{ env.VERSION }}-linux-amd64.tar.gz -o /tmp/aws-nuke-${{ env.VERSION }}-linux-amd64.tar.gz
+          tar -xf /tmp/aws-nuke-${{ env.VERSION }}-linux-amd64.tar.gz -C /tmp
           /tmp/aws-nuke -c config/nuke-config.yaml --no-dry-run --force 2> errors.txt
 
       - name: Show errors
