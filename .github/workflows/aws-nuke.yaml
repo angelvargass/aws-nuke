@@ -27,6 +27,7 @@ jobs:
       - name: Nuke
         run: |
           ARCH=$(uname -m)
+          cat $ARCH
           curl -s -L https://github.com/ekristen/aws-nuke/releases/download/${{ env.VERSION }}/aws-nuke-${{ env.VERSION }}-linux-${ARCH}.tar.gz -o /tmp/aws-nuke-${{ env.VERSION }}-linux-${ARCH}.tar.gz
           tar -xf /tmp/aws-nuke-${{ env.VERSION }}-linux-${ARCH}.tar.gz -C /tmp
           /tmp/aws-nuke -c config/nuke-config.yaml --no-dry-run --force 2> errors.txt
@@ -34,6 +35,6 @@ jobs:
       - name: Show errors
         if: always()
         run: |
-          if [-s errors.txt]; then
+          if [-f errors.txt]; then
             cat errors.txt
           fi
