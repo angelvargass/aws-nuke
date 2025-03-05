@@ -4,3 +4,6 @@ regions:
 resource-types:
   excludes:
     - IAMRole
+
+accounts:
+  "872192473555"
