@@ -3,6 +3,10 @@ name: AWS Nuke
 on:
   - workflow_dispatch
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   aws-nuke:
     runs-on: ubuntu-latest
