@@ -1,0 +1,34 @@
+name: AWS Nuke
+
+on:
+  - workflow_dispatch
+
+jobs:
+  aws-nuke:
+    runs-on: ubuntu-latest
+    env:
+      VERSION: v3.48.2
+
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/GitRole
+          aws-region: us-east-1
+
+      - name: Nuke
+        run: |
+          ARCH=$(uname -m)
+          curl -L https://github.com/ekristen/aws-nuke/releases/download/${{ env.VERSION }}/aws-nuke-${{ env.VERSION }}-linux-${ARCH} -o aws-nuke
+          chmod +x aws-nuke
+          ./aws-nuke -c config/nuke-config.yaml --no-dry-run --force 2> errors.txt
+
+      - name: Show errors
+        run: |
+          if [-s errors.txt]; then
+            cat errors.txt
+          fi

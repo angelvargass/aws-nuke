@@ -1,0 +1,6 @@
+regions:
+- us-east-1
+
+resource-types:
+  excludes:
+    - IAMRole
