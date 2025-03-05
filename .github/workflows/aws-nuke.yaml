@@ -32,6 +32,7 @@ jobs:
           ./aws-nuke -c config/nuke-config.yaml --no-dry-run --force 2> errors.txt
 
       - name: Show errors
+        if: always()
         run: |
           if [-s errors.txt]; then
             cat errors.txt
