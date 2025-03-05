@@ -1,8 +1,10 @@
 regions:
   - global
   - us-east-1
-  
-no-blocklist-terms-default: true
+  - us-east-2
+
+blocklist:
+  - "987654321098" # Production Account
 
 settings:
   EC2Image:
@@ -21,6 +23,7 @@ settings:
 
 resource-types:
   excludes:
+    - IAMRole
     - S3Object # Excluded because S3 bucket removal handles removing all S3Objects
     - ServiceCatalogTagOption # Excluded due to https://github.com/rebuy-de/aws-nuke/issues/515
     - ServiceCatalogTagOptionPortfolioAttachment # Excluded due to https://github.com/rebuy-de/aws-nuke/issues/515
