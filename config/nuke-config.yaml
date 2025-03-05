@@ -1,6 +1,8 @@
 regions:
   - global
   - us-east-1
+  
+no-blocklist-terms-default: true
 
 settings:
   EC2Image:
