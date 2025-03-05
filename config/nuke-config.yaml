@@ -6,4 +6,8 @@ resource-types:
     - IAMRole
 
 accounts:
-  "872192473555"
+  '872192473555':
+    presets:
+      - common
+      - organization
+      - defaults
