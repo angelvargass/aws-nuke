@@ -28,7 +28,7 @@ jobs:
         run: |
           curl -s -L https://github.com/ekristen/aws-nuke/releases/download/${{ env.VERSION }}/aws-nuke-${{ env.VERSION }}-linux-amd64.tar.gz -o /tmp/aws-nuke-${{ env.VERSION }}-linux-amd64.tar.gz
           tar -xf /tmp/aws-nuke-${{ env.VERSION }}-linux-amd64.tar.gz -C /tmp
-          /tmp/aws-nuke -c config/nuke-config.yaml --no-dry-run --force 2> errors.txt
+          /tmp/aws-nuke nuke -c config/nuke-config.yaml --no-dry-run --force 2> errors.txt
 
       - name: Show errors
         if: always()
