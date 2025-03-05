@@ -23,6 +23,10 @@ settings:
 resource-types:
   excludes:
     - IAMRole
+    - IAMUser
+    - IAMPolicy
+    - IAMGroup
+    - IAMIdentityProvider
     - S3Object # Excluded because S3 bucket removal handles removing all S3Objects
     - ServiceCatalogTagOption # Excluded due to https://github.com/rebuy-de/aws-nuke/issues/515
     - ServiceCatalogTagOptionPortfolioAttachment # Excluded due to https://github.com/rebuy-de/aws-nuke/issues/515
