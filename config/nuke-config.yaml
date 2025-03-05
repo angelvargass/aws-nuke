@@ -27,6 +27,9 @@ resource-types:
     - IAMPolicy
     - IAMGroup
     - IAMIdentityProvider
+    - IAMRolePolicyAttachment # Exclude detachment of policies
+    - IAMUserPolicyAttachment # Exclude detachment of policies
+    - IAMGroupPolicyAttachment # Exclude detachment of policies
     - S3Object # Excluded because S3 bucket removal handles removing all S3Objects
     - ServiceCatalogTagOption # Excluded due to https://github.com/rebuy-de/aws-nuke/issues/515
     - ServiceCatalogTagOptionPortfolioAttachment # Excluded due to https://github.com/rebuy-de/aws-nuke/issues/515
